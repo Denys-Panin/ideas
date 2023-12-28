@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomePageController;
+use App\Http\Controllers\IdeaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -17,8 +18,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomePageController::class, 'index']);
-Route::get('/create_idea', [HomePageController::class, 'createIdea']);
+Route::get('/', [HomePageController::class, 'index'])->name('home_page');
+Route::post('/create_idea', [IdeaController::class, 'createIdea'])->name('idea.create');
 Route::get('/login', [LoginController::class, 'index']);
 Route::get('/register', [RegisterController::class, 'index']);
 Route::get('/profile', [ProfileController::class, 'index']);
