@@ -4,89 +4,79 @@
         <div class="row">
             @include('components.menu')
             <div class="col-6">
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{-- <div class="alert alert-success alert-dismissible fade show" role="alert">
                     Idea created Successfully
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
+                </div> --}}
                 <h4> Share yours ideas </h4>
                 <div class="row">
                     <div class="mb-3">
                         <textarea class="form-control" id="idea" rows="3"></textarea>
                     </div>
                     <div class="">
-                        <button class="btn btn-dark"> Share </button>
+                        <a href="create_idea" class="btn btn-dark">Share</a>
+                        {{-- <button class="btn btn-dark"> Share </button> --}}
                     </div>
                 </div>
                 <hr>
-                <div class="mt-3">
-                    <div class="card">
-                        <div class="px-3 pt-4 pb-2">
-                            <div class="d-flex align-items-center justify-content-between">
-                                <div class="d-flex align-items-center">
-                                    <img style="width:50px" class="me-2 avatar-sm rounded-circle"
-                                        src="https://api.dicebear.com/6.x/fun-emoji/svg?seed=Mario" alt="Mario Avatar">
-                                    <div>
-                                        <h5 class="card-title mb-0"><a href="#"> User-1
-                                            </a></h5>
+                @foreach ($ideas as $idea)
+                    <div class="mt-3">
+                        <div class="card">
+                            <div class="px-3 pt-4 pb-2">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div class="d-flex align-items-center">
+                                        <img style="width:50px" class="me-2 avatar-sm rounded-circle"
+                                            src="https://api.dicebear.com/6.x/fun-emoji/svg?seed=Mario" alt="Mario Avatar">
+                                        <div>
+                                            <h5 class="card-title mb-0"><a href="#"> User-1
+                                                </a></h5>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card-body">
-                            <p class="fs-6 fw-light text-muted">
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                                been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                                galley of type and scrambled it to make a type specimen book. It has survived not only five
-                                centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-                                It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
-                                passages, and more recently with desktop publishing software like Aldus PageMaker including
-                                versions of Lorem Ipsum.
-                            </p>
-                            <div class="d-flex justify-content-between">
-                                <div>
-                                    <a href="#" class="fw-light nav-link fs-6"> <span class="fas fa-heart me-1">
-                                        </span> 100 </a>
+                            <div class="card-body">
+                                <p class="fs-6 fw-light text-muted">
+                                    {{ $idea->content }}
+                                </p>
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <a href="#" class="fw-light nav-link fs-6"> <span class="fas fa-heart me-1">
+                                            </span> {{ $idea->likes }} </a>
+                                    </div>
+                                    <div>
+                                        <span class="fs-6 fw-light text-muted"> <span class="fas fa-clock"> </span>
+                                            {{ $idea->created_at }} </span>
+                                    </div>
                                 </div>
                                 <div>
-                                    <span class="fs-6 fw-light text-muted"> <span class="fas fa-clock"> </span>
-                                        3-5-2023 </span>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="mb-3">
-                                    <textarea class="fs-6 form-control" rows="1"></textarea>
-                                </div>
-                                <div>
-                                    <button class="btn btn-primary btn-sm"> Post Comment </button>
-                                </div>
+                                    <div class="mb-3">
+                                        <textarea class="fs-6 form-control" rows="1"></textarea>
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-primary btn-sm"> Post Comment </button>
+                                    </div>
 
-                                <hr>
-                                <div class="d-flex align-items-start">
-                                    <img style="width:35px" class="me-2 avatar-sm rounded-circle"
-                                        src="https://api.dicebear.com/6.x/fun-emoji/svg?seed=Luigi" alt="Luigi Avatar">
-                                    <div class="w-100">
-                                        <div class="d-flex justify-content-between">
-                                            <h6 class="">User-2
-                                            </h6>
-                                            <small class="fs-6 fw-light text-muted"> 3 hour
-                                                ago</small>
+                                    <hr>
+                                    <div class="d-flex align-items-start">
+                                        <img style="width:35px" class="me-2 avatar-sm rounded-circle"
+                                            src="https://api.dicebear.com/6.x/fun-emoji/svg?seed=Luigi" alt="Luigi Avatar">
+                                        <div class="w-100">
+                                            <div class="d-flex justify-content-between">
+                                                <h6 class="">User-2
+                                                </h6>
+                                                <small class="fs-6 fw-light text-muted"> 3 hour
+                                                    ago</small>
+                                            </div>
+                                            <p class="fs-6 mt-3 fw-light">
+                                                Comment from User
+                                            </p>
                                         </div>
-                                        <p class="fs-6 mt-3 fw-light">
-                                            It is a long established fact that a reader will be distracted by the readable
-                                            content of a page when looking at its layout. The point of using Lorem Ipsum is
-                                            that it has a more-or-less normal distribution of letters, as opposed to using
-                                            'Content here, content here', making it look like readable English. Many desktop
-                                            publishing packages and web page editors now use Lorem Ipsum as their default
-                                            model text, and a search for 'lorem ipsum' will uncover many web sites still in
-                                            their infancy. Various versions have evolved over the years, sometimes by
-                                            accident, sometimes on purpose (injected humour and the like).
-                                        </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
             </div>
             <div class="col-3">
                 <div class="card">
