@@ -18,8 +18,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomePageController::class, 'index'])->name('home_page');
-Route::post('/create_idea', [IdeaController::class, 'createIdea'])->name('idea.create');
-Route::get('/login', [LoginController::class, 'index']);
-Route::get('/register', [RegisterController::class, 'index']);
-Route::get('/profile', [ProfileController::class, 'index']);
+Route::get('/', [HomePageController::class, 'index'])->name('home_page.index');
+
+Route::post('/ideas', [IdeaController::class, 'store'])->name('ideas.store');
+Route::delete('/ideas/{id}', [IdeaController::class, 'destroy'])->name('ideas.destroy');
+
+Route::get('/login', [LoginController::class, 'index'])->name('login.index');
+Route::get('/register', [RegisterController::class, 'index'])->name('register.index');
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
