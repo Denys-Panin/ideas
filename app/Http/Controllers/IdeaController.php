@@ -9,23 +9,43 @@ class IdeaController extends Controller
 {
     public function show(Idea $idea)
     {
-        return view('idea.show_idea', [
-            'idea' => $idea
-        ]);
+        // return view('idea.show_idea', [
+        //     'idea' => $idea
+        // ]);
+        return view('idea.show_idea', compact('idea'));
     }
 
     public function store()
     {
         request()->validate([
-            'idea' => 'required|min:3|max:240'
+            'content' => 'required|min:3|max:240'
         ]);
 
         $ideas = new Idea([
-            'content' => request()->get('idea', ''),
+            'content' => request()->get('content', ''),
             'likes' => 999
         ]);
         $ideas->save();
         return redirect()->route('home_page.index')->with('succes', 'Idea created Successfully!');
+    }
+
+    public function edit(Idea $idea)
+    {
+        $editing = True;
+
+        return view('idea.show_idea', compact('idea', 'editing'));
+    }
+
+    public function update(Idea $idea)
+    {
+        request()->validate([
+            'content' => 'required|min:3|max:240'
+        ]);
+
+        $idea->content = request()->get('content', '');
+        $idea->save();
+
+        return redirect()->route('ideas.show', $idea->id)->with('succes', 'Idea update Successfully!');
     }
 
     // public function destroy($id)

@@ -1,5 +1,5 @@
 @include('shared.message_success')
-@error('idea')
+@error('content')
     @include('shared.message_error')
 @enderror
 <h4> Share yours ideas </h4>
@@ -7,7 +7,7 @@
     <form action="{{ route('ideas.store') }}" method="POST">
         @csrf
         <div class="mb-3">
-            <textarea name="idea" class="form-control" id="idea" rows="3"></textarea>
+            <textarea name="content" class="form-control" id="content" rows="3"></textarea>
         </div>
         <div class="">
             <button type="submit" class="btn btn-dark"> Share </button>

@@ -4,13 +4,7 @@
         <div class="row">
             @include('components.menu')
             <div class="col-6">
-                @include('shared.submit_idea')
-                @foreach ($ideas as $idea)
-                    @include('shared.idea-card')
-                @endforeach
-                <div class="mt-3">
-                    {{ $ideas->links() }}
-                </div>
+                @include('shared.idea-card')
             </div>
             <div class="col-3">
                 <div class="card">
