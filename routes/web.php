@@ -20,8 +20,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomePageController::class, 'index'])->name('home_page.index');
 
-Route::get('show/idea/{idea}', [IdeaController::class, 'show'])->name('idea.show');
 Route::post('/ideas', [IdeaController::class, 'store'])->name('ideas.store');
+Route::get('/ideas/{idea}', [IdeaController::class, 'show'])->name('ideas.show');
 Route::delete('/ideas/{idea}', [IdeaController::class, 'destroy'])->name('ideas.destroy');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login.index');
