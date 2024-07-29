@@ -1,10 +1,14 @@
 <?php
 
+use App\Http\Controllers\HomePageController;
+use Illuminate\Database\Query\IndexHint;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', [HomePageController::class, 'index']);
 
 Route::middleware([
     'auth:sanctum',
