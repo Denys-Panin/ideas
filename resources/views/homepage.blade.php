@@ -38,6 +38,7 @@
                 </div>
             </div>
             <div class="col-6">
+                @include('shared.delete-message')
                 @include('shared.succcess-message')
                 @include('shared.submit_idea')
                 <hr>
