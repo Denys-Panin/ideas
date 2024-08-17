@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomePageController;
+use App\Http\Controllers\IdeaController;
 use Illuminate\Database\Query\IndexHint;
 use Illuminate\Support\Facades\Route;
 
@@ -8,7 +9,8 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', [HomePageController::class, 'index']);
+Route::get('/', [HomePageController::class, 'index'])->name('homepage');
+Route::post('/idea', [IdeaController::class, 'store'])->name('idea.create');
 
 Route::middleware([
     'auth:sanctum',
