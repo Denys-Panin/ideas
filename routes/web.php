@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\IdeaController;
 use Illuminate\Database\Query\IndexHint;
@@ -15,6 +16,8 @@ Route::get('/ideas/{idea}/edit', [IdeaController::class, 'edit'])->name('ideas.e
 Route::put('/ideas/{idea}', [IdeaController::class, 'update'])->name('ideas.update');
 Route::post('/ideas', [IdeaController::class, 'store'])->name('ideas.store');
 Route::delete('/ideas/{idea}', [IdeaController::class, 'destroy'])->name('ideas.destroy');
+Route::post('idea/{idea}/comments', [CommentController::class, 'store'])->name('idea.comments.store');
+
 
 
 Route::middleware([

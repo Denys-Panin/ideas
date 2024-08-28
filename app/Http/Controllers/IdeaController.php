@@ -23,26 +23,26 @@ class IdeaController extends Controller
 
     public function update(Idea $idea)
     {
-        request()->validate([
+        $validate = request()->validate([
             'content' => 'required|min:5|max:240'
         ]);
 
-        $idea->content = request()->get('content', '');
-        $idea->save();
+        $idea->update($validate);
 
         return redirect()->route('ideas.show', $idea->id)->with('success', 'Idea UPDATE successfuly!');
     }
 
     public function store()
     {
-        request()->validate([
+        $validate = request()->validate([
             'content' => 'required|min:5|max:240'
         ]);
-        $idea = Idea::create(
-            [
-                'content' => request()->get('content', ''),
-            ]
-        );
+        // $idea = Idea::create(
+        //     [
+        //         'content' => request()->get('content', ''),
+        //     ]
+        // );
+        Idea::create($validate);
         return redirect()->route('homepage')->with('success', 'Idea CREATED!');
         // $idea = new Idea([
         //     'content' => request()->get('idea', ''),
